@@ -1,4 +1,29 @@
 import textwrap
+from pathlib import Path
+
+ROOT_PATH = Path(__file__).parent
+
+
+def carregar_contatos():
+    contatos = []
+    try:
+        with open(ROOT_PATH / "contatos.txt", "r", encoding="utf-8") as arquivo:
+            for linha in arquivo:
+                nome, email, numero = linha.strip().split(", ")
+                contatos.append({
+                    "nome": nome.split(": ")[1],
+                    "email": email.split(": ")[1],
+                    "numero": numero.split(": ")[1]
+                })
+    except FileNotFoundError:
+        pass
+    return contatos
+
+
+def salvar_contatos(contatos):
+    with open(ROOT_PATH / "contatos.txt", "w", encoding="utf-8") as arquivo:
+        for contato in contatos:
+            arquivo.write(f"Nome: {contato['nome']}, Email: {contato['email']}, Número: {contato['numero']}\n")
 
 
 def menu():
@@ -30,6 +55,7 @@ def inserir_contato(contatos):
     email = input("Informe o email do contato: ")
 
     contatos.append({"nome": nome, "email": email, "numero": numero})
+    salvar_contatos(contatos)
     return contatos
 
 
@@ -45,6 +71,7 @@ def excluir_contato(contatos):
     if contato:
         contatos.remove(contato)
         print("Contato removido com sucesso!\n")
+        salvar_contatos(contatos)
     else:
         print("Contato não encontrado!\n")
 
@@ -94,6 +121,8 @@ def alterar_contato(contatos):
                     "Opcao invalida! Informe uma das opcoes acima para realizar a operacao corretamente!\n"
                 )
 
+        salvar_contatos(contatos)
+
     else:
         print("Contato não encontrado!\n")
 
@@ -110,7 +139,7 @@ def listar_contatos(contatos):
 
 def main():
 
-    contatos = []
+    contatos = carregar_contatos()
 
     while True:
 
