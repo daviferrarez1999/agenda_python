@@ -23,7 +23,7 @@ def carregar_contatos():
 def salvar_contatos(contatos):
     with open(ROOT_PATH / "contatos.txt", "w", encoding="utf-8") as arquivo:
         for contato in contatos:
-            arquivo.write(f"Nome: {contato['nome']}, Email: {contato['email']}, Número: {contato['numero']}\n")
+            arquivo.write(f"Nome: {contato['nome']}, E-mail: {contato['email']}, Número: {contato['numero']}\n")
 
 
 def menu():
@@ -50,7 +50,7 @@ def inserir_contato(contatos):
         return contatos
 
     numero = input(
-        "Informe o numero que deseja cadastar no formato: (XX) XXXX-XXXX para telefone fixo e (XX) XXXXX-XXXX para celular: "
+        "Informe o numero que deseja cadastar no formato: (XX) XXXX-XXXX para telefone fixo e (XX) 9XXXX-XXXX para celular: "
     )
     email = input("Informe o email do contato: ")
 
