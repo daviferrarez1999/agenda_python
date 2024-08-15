@@ -17,12 +17,14 @@ def carregar_contatos():
                 })
     except FileNotFoundError:
         pass
+
     return contatos
 
 
 def salvar_contatos(contatos):
+    contatos_ordenados = sorted(contatos, key=lambda contato: contato["nome"])
     with open(ROOT_PATH / "contatos.txt", "w", encoding="utf-8") as arquivo:
-        for contato in contatos:
+        for contato in contatos_ordenados:
             arquivo.write(f"Nome: {contato['nome']}, E-mail: {contato['email']}, Número: {contato['numero']}\n")
 
 
@@ -56,7 +58,7 @@ def inserir_contato(contatos):
 
     contatos.append({"nome": nome, "email": email, "numero": numero})
     salvar_contatos(contatos)
-    return contatos
+    return carregar_contatos()
 
 
 def filtrar_contatos(nome, contatos):
@@ -74,6 +76,8 @@ def excluir_contato(contatos):
         salvar_contatos(contatos)
     else:
         print("Contato não encontrado!\n")
+
+    return carregar_contatos()
 
 
 def alterar_contato(contatos):
@@ -125,6 +129,8 @@ def alterar_contato(contatos):
 
     else:
         print("Contato não encontrado!\n")
+
+    return carregar_contatos()
 
 
 def listar_contatos(contatos):
