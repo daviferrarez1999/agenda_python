@@ -1,2 +1,3 @@
-Nome: João Silva, E-mail: joao@gmail.com, Número: (32) 97657-4534
-Nome: Ana Souza, E-mail: ana@gmail.com, Número: (32) 95443-9878
+Nome: Alice Souza, E-mail: alice@gmail.com, Número: (32) 93424-7786
+Nome: Carlos Almeida, E-mail: carlos@gmail.com, Número: (32) 96564-3422
+Nome: José Oliveira, E-mail: jose@gmail.com, Número: (32) 95435-4234
