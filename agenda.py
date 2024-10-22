@@ -155,7 +155,7 @@ def main():
             contatos = inserir_contato(contatos)
 
         elif opcao_agenda == "2":
-            nome = input("Informe o nome do contato que desja filtrar: ")
+            nome = input("Informe o nome do contato que deseja filtrar: ")
             contato = filtrar_contatos(nome, contatos)
             if contato:
                 print(contato)
